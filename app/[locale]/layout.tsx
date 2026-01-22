@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { Space_Grotesk } from 'next/font/google';
 import "../globals.css";
 import { Providers } from '../providers';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+
+const display = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-display',
+  display: 'swap',
+});
 
 // Metadata is generated dynamically below
 
@@ -35,7 +43,7 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={display.variable}>
       <head>
         <link rel="preconnect" href="https://fakestoreapi.com" crossOrigin="anonymous" />
       </head>
