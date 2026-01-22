@@ -154,4 +154,30 @@ a {
   .text-balance {
     text-wrap: balance;
   }
+  
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slide-in-from-bottom {
+    from { transform: translateY(1rem); }
+    to { transform: translateY(0); }
+  }
+  
+  .animate-in {
+    animation-fill-mode: both;
+  }
+  
+  .fade-in {
+    animation-name: fade-in;
+  }
+  
+  .slide-in-from-bottom-4 {
+    animation-name: slide-in-from-bottom;
+  }
+  
+  .duration-300 {
+    animation-duration: 300ms;
+  }
 }

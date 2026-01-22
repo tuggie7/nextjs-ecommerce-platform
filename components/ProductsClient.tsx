@@ -186,8 +186,14 @@ export default function ProductsClient({ initialProducts, categories }: Products
 
       {/* Products Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {filteredProducts.map((product, index) => (
+          <div
+            key={product.id}
+            className="animate-in fade-in slide-in-from-bottom-4 duration-300"
+            style={{ animationDelay: `${index * 50}ms`, animationFillMode: 'backwards' }}
+          >
+            <ProductCard product={product} />
+          </div>
         ))}
       </div>
 
