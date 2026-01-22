@@ -79,6 +79,24 @@
     "addedToCart": "Sepete eklendi",
     "siteName": "E-Ticaret Platformu"
   },
+  "Checkout": {
+    "title": "Ödeme",
+    "shippingInfo": "Gönderim Bilgileri",
+    "paymentInfo": "Ödeme Bilgileri",
+    "fullName": "Ad Soyad",
+    "email": "E-posta",
+    "address": "Adres",
+    "city": "Şehir",
+    "zipCode": "Posta Kodu",
+    "cardNumber": "Kart Numarası",
+    "testCard": "Test için 4242 4242 4242 4242 kullanın",
+    "placeOrder": "Siparişi Tamamla",
+    "processing": "İşleniyor...",
+    "orderSummary": "Sipariş Özeti",
+    "success": "Sipariş Başarılı!",
+    "successMessage": "Siparişiniz için teşekkür ederiz. Kısa süre içinde onay e-postası alacaksınız.",
+    "continueShopping": "Alışverişe Devam Et"
+  },
   "NotFound": {
     "title": "Sayfa Bulunamadı",
     "description": "Aradığınız sayfa mevcut değil veya taşınmış olabilir.",

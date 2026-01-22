@@ -79,6 +79,24 @@
     "addedToCart": "Added to cart",
     "siteName": "E-Commerce Platform"
   },
+  "Checkout": {
+    "title": "Checkout",
+    "shippingInfo": "Shipping Information",
+    "paymentInfo": "Payment Information",
+    "fullName": "Full Name",
+    "email": "Email",
+    "address": "Address",
+    "city": "City",
+    "zipCode": "ZIP Code",
+    "cardNumber": "Card Number",
+    "testCard": "Use 4242 4242 4242 4242 for testing",
+    "placeOrder": "Place Order",
+    "processing": "Processing...",
+    "orderSummary": "Order Summary",
+    "success": "Order Successful!",
+    "successMessage": "Thank you for your order. You'll receive a confirmation email shortly.",
+    "continueShopping": "Continue Shopping"
+  },
   "NotFound": {
     "title": "Page Not Found",
     "description": "The page you're looking for doesn't exist or has been moved.",

@@ -123,7 +123,9 @@ export default function CartClient() {
             <span className="text-gray-300">{t('total')}</span>
             <span className="text-2xl font-bold text-white">${total.toFixed(2)}</span>
           </div>
-          <button className="w-full btn-primary py-3 rounded-lg focus-ring">Checkout</button>
+          <Link href={`/${locale}/checkout`} className="block w-full btn-primary py-3 rounded-lg text-center focus-ring">
+            Checkout
+          </Link>
           <button
             className="w-full mt-3 bg-white/10 text-white py-3 rounded-lg hover:bg-white/15"
             onClick={() => {
