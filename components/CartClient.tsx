@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
 import { removeFromCart, updateQuantity, clearCart } from '@/lib/redux/cartSlice';
 import Image from 'next/image';
@@ -15,6 +16,7 @@ export default function CartClient() {
   const pathname = usePathname();
   const locale = pathname.split('/')[1];
   const { show } = useToast();
+  const [zoomedImage, setZoomedImage] = useState<{ src: string; title: string } | null>(null);
 
   const handleQuantityChange = (id: number, quantity: number) => {
     dispatch(updateQuantity({ id, quantity }));
@@ -37,14 +39,43 @@ export default function CartClient() {
     <div className="container mx-auto px-4 py-10">
       <h1 className="text-3xl font-bold mb-6 text-white">{t('title')}</h1>
 
+      {/* Image Zoom Modal */}
+      {zoomedImage && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setZoomedImage(null)}
+        >
+          <button
+            className="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 focus:outline-none"
+            onClick={() => setZoomedImage(null)}
+            aria-label="Close"
+          >
+            ×
+          </button>
+          <div className="relative max-w-4xl max-h-[90vh] w-full h-full flex items-center justify-center">
+            <Image
+              src={zoomedImage.src}
+              alt={zoomedImage.title}
+              fill
+              className="object-contain drop-shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Items */}
         <div className="lg:col-span-2 space-y-6">
           {items.map((item) => (
             <div key={item.id} className="flex items-center glass rounded-2xl p-4 border border-white/5">
-              <div className="relative w-24 h-24 mr-4">
+              <button
+                className="relative w-24 h-24 mr-4 cursor-zoom-in hover:opacity-80 transition"
+                onClick={() => setZoomedImage({ src: item.image, title: item.title })}
+                aria-label={`View ${item.title} image`}
+              >
                 <Image src={item.image} alt={item.title} fill className="object-contain" />
-              </div>
+              </button>
               <div className="flex-1">
                 <h3 className="font-semibold line-clamp-2 text-white">{item.title}</h3>
                 <p className="text-sm text-gray-300">{t('quantity')}: {item.quantity}</p>
