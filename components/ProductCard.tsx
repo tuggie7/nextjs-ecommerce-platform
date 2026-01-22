@@ -53,6 +53,7 @@ function ProductCard({ product }: ProductCardProps) {
             <button
               onClick={handleAddToCart}
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-sm"
+              aria-label={t('addToCart')}
             >
               {t('addToCart')}
             </button>

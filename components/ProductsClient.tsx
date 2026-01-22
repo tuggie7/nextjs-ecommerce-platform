@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Product } from '@/types';
 import ProductCard from '@/components/ProductCard';
 import { useTranslations } from 'next-intl';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 
 interface ProductsClientProps {
   initialProducts: Product[];
@@ -12,11 +13,43 @@ interface ProductsClientProps {
 
 export default function ProductsClient({ initialProducts, categories }: ProductsClientProps) {
   const t = useTranslations('Products');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
   const [products, setProducts] = useState<Product[]>(initialProducts);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(initialProducts);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [sortBy, setSortBy] = useState<string>('default');
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+
+  // Initialize state from URL
+  useEffect(() => {
+    const cat = searchParams.get('category');
+    const sort = searchParams.get('sort');
+    const min = searchParams.get('min');
+    const max = searchParams.get('max');
+
+    if (cat) setSelectedCategory(cat);
+    if (sort) setSortBy(sort);
+    if (min || max) {
+      setPriceRange([
+        min ? Number(min) : 0,
+        max ? Number(max) : 1000,
+      ]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Sync filters to URL
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (selectedCategory && selectedCategory !== 'all') params.set('category', selectedCategory); else params.delete('category');
+    if (sortBy && sortBy !== 'default') params.set('sort', sortBy); else params.delete('sort');
+    params.set('min', String(priceRange[0]));
+    params.set('max', String(priceRange[1]));
+    router.replace(`${pathname}?${params.toString()}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCategory, sortBy, priceRange]);
 
   useEffect(() => {
     let result = [...products];
@@ -94,6 +127,7 @@ export default function ProductsClient({ initialProducts, categories }: Products
                 value={priceRange[1]}
                 onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
                 className="w-full"
+                aria-label="Max price"
               />
             </div>
           </div>

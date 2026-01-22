@@ -6,10 +6,24 @@ import { Providers } from '../providers';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-export const metadata: Metadata = {
-  title: "E-Commerce Platform",
-  description: "Multi-language SEO-optimized e-commerce platform",
-};
+// Metadata is generated dynamically below
+
+export async function generateMetadata({
+  params: { locale }
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: "E-Commerce Platform",
+    description: "Multi-language SEO-optimized e-commerce platform",
+    alternates: {
+      languages: {
+        en: '/en',
+        tr: '/tr',
+      },
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -22,6 +36,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        <link rel="preconnect" href="https://fakestoreapi.com" crossOrigin="anonymous" />
+      </head>
       <body className="flex flex-col min-h-screen">
         <NextIntlClientProvider messages={messages}>
           <Providers>
