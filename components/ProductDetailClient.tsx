@@ -61,7 +61,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               <span className="text-yellow-300 text-2xl">★</span>
               <span className="ml-2 text-xl font-semibold">{product.rating.rate}</span>
             </div>
-            <span className="ml-4 text-sm">({product.rating.count} reviews)</span>
+            <span className="ml-4 text-sm">({product.rating.count} {t('reviews')})</span>
           </div>
 
           <div className="text-4xl font-bold text-cyan-300">
@@ -81,7 +81,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 : 'btn-primary focus-ring'
             }`}
           >
-            {added ? '✓ Added to Cart' : t('addToCart')}
+            {added ? t('addedCheck') : t('addToCart')}
           </button>
         </div>
       </div>

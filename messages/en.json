@@ -27,17 +27,25 @@
     "filterByCategory": "Filter by Category",
     "sortBy": "Sort By",
     "priceRange": "Price Range",
+    "priceRangeValue": "${min} - ${max}",
+    "maxPriceLabel": "Max price",
     "priceAscending": "Price: Low to High",
     "priceDescending": "Price: High to Low",
     "allCategories": "All Categories",
-    "addToCart": "Add to Cart"
+    "addToCart": "Add to Cart",
+    "defaultSort": "Default",
+    "catalog": "Catalog",
+    "empty": "No products found"
   },
   "ProductDetail": {
     "addToCart": "Add to Cart",
     "description": "Description",
     "category": "Category",
     "price": "Price",
-    "backToProducts": "Back to Products"
+    "backToProducts": "Back to Products",
+    "reviews": "reviews",
+    "addedCheck": "✓ Added to Cart",
+    "notFoundTitle": "Product Not Found"
   },
   "Cart": {
     "title": "Shopping Cart",
@@ -55,6 +63,7 @@
     "products": "Products",
     "cart": "Cart",
     "language": "Language",
-    "addedToCart": "Added to cart"
+    "addedToCart": "Added to cart",
+    "siteName": "E-Commerce Platform"
   }
 }

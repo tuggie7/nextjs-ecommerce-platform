@@ -76,7 +76,7 @@ export default function ProductsClient({ initialProducts, categories }: Products
     <div className="container mx-auto px-4 py-10">
       <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
         <div>
-          <p className="text-sm text-gray-400 uppercase tracking-widest">Catalog</p>
+          <p className="text-sm text-gray-400 uppercase tracking-widest">{t('catalog')}</p>
           <h1 className="text-4xl font-bold text-white">{t('title')}</h1>
         </div>
       </div>
@@ -113,7 +113,7 @@ export default function ProductsClient({ initialProducts, categories }: Products
               onChange={(e) => setSortBy(e.target.value)}
               className="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-cyan-400 focus:border-transparent"
             >
-              <option value="default">Default</option>
+              <option value="default">{t('defaultSort')}</option>
               <option value="price-asc">{t('priceAscending')}</option>
               <option value="price-desc">{t('priceDescending')}</option>
             </select>
@@ -122,7 +122,7 @@ export default function ProductsClient({ initialProducts, categories }: Products
           {/* Price Range */}
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-2">
-              {t('priceRange')}: ${priceRange[0]} - ${priceRange[1]}
+              {t('priceRange')}: {t('priceRangeValue', { min: priceRange[0], max: priceRange[1] })}
             </label>
             <div className="flex items-center space-x-4">
               <input
@@ -132,7 +132,7 @@ export default function ProductsClient({ initialProducts, categories }: Products
                 value={priceRange[1]}
                 onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
                 className="w-full accent-cyan-400"
-                aria-label="Max price"
+                aria-label={t('maxPriceLabel')}
               />
             </div>
           </div>
@@ -148,7 +148,7 @@ export default function ProductsClient({ initialProducts, categories }: Products
 
       {filteredProducts.length === 0 && (
         <div className="text-center py-12 text-gray-300">
-          <p className="text-lg">No products found</p>
+          <p className="text-lg">{t('empty')}</p>
         </div>
       )}
     </div>

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { getProduct, getProducts } from '@/lib/api';
 import ProductDetailClient from '@/components/ProductDetailClient';
 import { notFound } from 'next/navigation';
@@ -13,9 +14,10 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const product = await getProduct(params.id);
+    const t = await getTranslations({ locale: params.locale, namespace: 'Common' });
     
     return {
-      title: `${product.title} | E-Commerce Platform`,
+      title: `${product.title} | ${t('siteName')}`,
       description: product.description,
       openGraph: {
         title: product.title,
@@ -24,8 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     };
   } catch {
+    const t = await getTranslations({ locale: params.locale, namespace: 'ProductDetail' });
     return {
-      title: 'Product Not Found',
+      title: t('notFoundTitle'),
     };
   }
 }

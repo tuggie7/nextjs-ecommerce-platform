@@ -27,17 +27,25 @@
     "filterByCategory": "Kategoriye Göre Filtrele",
     "sortBy": "Sırala",
     "priceRange": "Fiyat Aralığı",
+    "priceRangeValue": "${min} - ${max}",
+    "maxPriceLabel": "Maksimum fiyat",
     "priceAscending": "Fiyat: Düşükten Yükseğe",
     "priceDescending": "Fiyat: Yüksekten Düşüğe",
     "allCategories": "Tüm Kategoriler",
-    "addToCart": "Sepete Ekle"
+    "addToCart": "Sepete Ekle",
+    "defaultSort": "Varsayılan",
+    "catalog": "Katalog",
+    "empty": "Ürün bulunamadı"
   },
   "ProductDetail": {
     "addToCart": "Sepete Ekle",
     "description": "Açıklama",
     "category": "Kategori",
     "price": "Fiyat",
-    "backToProducts": "Ürünlere Dön"
+    "backToProducts": "Ürünlere Dön",
+    "reviews": "yorum",
+    "addedCheck": "✓ Sepete eklendi",
+    "notFoundTitle": "Ürün Bulunamadı"
   },
   "Cart": {
     "title": "Alışveriş Sepeti",
@@ -55,6 +63,7 @@
     "products": "Ürünler",
     "cart": "Sepet",
     "language": "Dil",
-    "addedToCart": "Sepete eklendi"
+    "addedToCart": "Sepete eklendi",
+    "siteName": "E-Ticaret Platformu"
   }
 }
