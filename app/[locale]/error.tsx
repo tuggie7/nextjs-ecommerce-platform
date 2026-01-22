@@ -26,7 +26,7 @@ export default function Error({
         
         <h2 className="text-3xl font-bold text-white">Something went wrong</h2>
         <p className="text-lg text-gray-300">
-          Don't worry, it's not your fault. We're working on fixing this.
+          Don&apos;t worry, it&apos;s not your fault. We&apos;re working on fixing this.
         </p>
         
         {error.message && (
