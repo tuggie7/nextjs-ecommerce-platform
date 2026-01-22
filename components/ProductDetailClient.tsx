@@ -31,54 +31,54 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-10">
       <Link 
         href={`/${locale}/products`}
-        className="text-blue-600 hover:underline mb-6 inline-block"
+        className="text-cyan-300 hover:text-cyan-200 mb-6 inline-block text-sm"
       >
         ← {t('backToProducts')}
       </Link>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Product Image */}
-        <div className="relative h-96 md:h-[600px] bg-gray-100 rounded-lg">
+        <div className="relative h-96 md:h-[560px] glass rounded-2xl flex items-center justify-center">
           <Image
             src={product.image}
             alt={product.title}
             fill
-            className="object-contain p-8"
+            className="object-contain p-10 drop-shadow-2xl"
             priority
           />
         </div>
 
         {/* Product Details */}
-        <div>
-          <span className="text-sm text-gray-500 uppercase">{product.category}</span>
-          <h1 className="text-4xl font-bold mt-2 mb-4">{product.title}</h1>
+        <div className="space-y-6">
+          <span className="text-sm text-cyan-200 uppercase tracking-widest">{product.category}</span>
+          <h1 className="text-4xl font-bold text-white leading-tight">{product.title}</h1>
           
-          <div className="flex items-center mb-6">
+          <div className="flex items-center text-gray-200">
             <div className="flex items-center">
-              <span className="text-yellow-400 text-2xl">★</span>
+              <span className="text-yellow-300 text-2xl">★</span>
               <span className="ml-2 text-xl font-semibold">{product.rating.rate}</span>
             </div>
-            <span className="ml-4 text-gray-600">({product.rating.count} reviews)</span>
+            <span className="ml-4 text-sm">({product.rating.count} reviews)</span>
           </div>
 
-          <div className="text-4xl font-bold text-blue-600 mb-6">
+          <div className="text-4xl font-bold text-cyan-300">
             ${product.price}
           </div>
 
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold mb-3">{t('description')}</h2>
-            <p className="text-gray-700 leading-relaxed">{product.description}</p>
+          <div className="space-y-3">
+            <h2 className="text-lg font-semibold text-white">{t('description')}</h2>
+            <p className="text-gray-200 leading-relaxed">{product.description}</p>
           </div>
 
           <button
             onClick={handleAddToCart}
             className={`w-full md:w-auto px-8 py-4 rounded-lg font-semibold text-lg transition ${
               added 
-                ? 'bg-green-600 text-white' 
-                : 'bg-blue-600 text-white hover:bg-blue-700'
+                ? 'bg-green-500 text-[#0b1021]' 
+                : 'btn-primary'
             }`}
           >
             {added ? '✓ Added to Cart' : t('addToCart')}

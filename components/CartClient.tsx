@@ -24,9 +24,9 @@ export default function CartClient() {
   if (items.length === 0) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
-        <h1 className="text-3xl font-bold mb-4">{t('title')}</h1>
-        <p className="text-gray-600 mb-6">{t('empty')}</p>
-        <Link href={`/${locale}/products`} className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+        <h1 className="text-3xl font-bold mb-4 text-white">{t('title')}</h1>
+        <p className="text-gray-300 mb-6">{t('empty')}</p>
+        <Link href={`/${locale}/products`} className="btn-primary px-6 py-3 rounded-lg inline-block">
           {t('continueShopping')}
         </Link>
       </div>
@@ -34,37 +34,37 @@ export default function CartClient() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">{t('title')}</h1>
+    <div className="container mx-auto px-4 py-10">
+      <h1 className="text-3xl font-bold mb-6 text-white">{t('title')}</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Items */}
         <div className="lg:col-span-2 space-y-6">
           {items.map((item) => (
-            <div key={item.id} className="flex items-center bg-white rounded-lg shadow p-4">
+            <div key={item.id} className="flex items-center glass rounded-2xl p-4 border border-white/5">
               <div className="relative w-24 h-24 mr-4">
                 <Image src={item.image} alt={item.title} fill className="object-contain" />
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold line-clamp-2">{item.title}</h3>
-                <p className="text-sm text-gray-500">{t('quantity')}: {item.quantity}</p>
+                <h3 className="font-semibold line-clamp-2 text-white">{item.title}</h3>
+                <p className="text-sm text-gray-300">{t('quantity')}: {item.quantity}</p>
                 <div className="mt-2 flex items-center space-x-2">
                   <button
                     onClick={() => handleQuantityChange(item.id, Math.max(0, item.quantity - 1))}
-                    className="px-3 py-1 bg-gray-100 rounded hover:bg-gray-200"
+                    className="px-3 py-1 bg-white/10 rounded hover:bg-white/15 text-white"
                   >
                     -
                   </button>
                   <input
                     type="number"
-                    className="w-16 border rounded px-2 py-1"
+                    className="w-16 border border-white/10 bg-transparent text-white rounded px-2 py-1"
                     value={item.quantity}
                     min={0}
                     onChange={(e) => handleQuantityChange(item.id, Number(e.target.value))}
                   />
                   <button
                     onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
-                    className="px-3 py-1 bg-gray-100 rounded hover:bg-gray-200"
+                    className="px-3 py-1 bg-white/10 rounded hover:bg-white/15 text-white"
                   >
                     +
                   </button>
@@ -80,21 +80,21 @@ export default function CartClient() {
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-lg font-bold text-blue-600">${(item.price * item.quantity).toFixed(2)}</div>
+                <div className="text-lg font-bold text-cyan-300">${(item.price * item.quantity).toFixed(2)}</div>
               </div>
             </div>
           ))}
         </div>
 
         {/* Summary */}
-        <div className="bg-white rounded-lg shadow p-6 h-fit">
+        <div className="glass rounded-2xl p-6 h-fit border border-white/5">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-gray-600">{t('total')}</span>
-            <span className="text-2xl font-bold">${total.toFixed(2)}</span>
+            <span className="text-gray-300">{t('total')}</span>
+            <span className="text-2xl font-bold text-white">${total.toFixed(2)}</span>
           </div>
-          <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">Checkout</button>
+          <button className="w-full btn-primary py-3 rounded-lg">Checkout</button>
           <button
-            className="w-full mt-3 bg-gray-100 text-gray-800 py-3 rounded-lg hover:bg-gray-200"
+            className="w-full mt-3 bg-white/10 text-white py-3 rounded-lg hover:bg-white/15"
             onClick={() => {
               dispatch(clearCart());
               show(t('cleared'));

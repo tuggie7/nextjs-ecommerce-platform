@@ -30,33 +30,33 @@ function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Link href={`/${locale}/products/${product.id}`}>
-      <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-        <div className="relative h-64 bg-gray-100">
+      <div className="glass rounded-2xl overflow-hidden card-hover h-full flex flex-col border border-white/5">
+        <div className="relative h-64 bg-gradient-to-br from-white/5 via-white/2 to-transparent">
           <Image
             src={product.image}
             alt={product.title}
             fill
-            className="object-contain p-4"
+            className="object-contain p-6 drop-shadow-xl"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
         
-        <div className="p-4 flex flex-col flex-grow">
-          <span className="text-xs text-gray-500 uppercase mb-2">{product.category}</span>
-          <h3 className="text-lg font-semibold mb-2 line-clamp-2 flex-grow">{product.title}</h3>
+        <div className="p-5 flex flex-col flex-grow">
+          <span className="text-xs text-cyan-200 uppercase mb-2 tracking-widest">{product.category}</span>
+          <h3 className="text-lg font-semibold mb-3 line-clamp-2 flex-grow text-white">{product.title}</h3>
           
-          <div className="flex items-center mb-2">
-            <span className="text-yellow-400">★</span>
-            <span className="ml-1 text-sm text-gray-600">
+          <div className="flex items-center mb-3 text-sm text-gray-200 space-x-2">
+            <span className="text-yellow-300">★</span>
+            <span>
               {product.rating.rate} ({product.rating.count})
             </span>
           </div>
           
           <div className="flex items-center justify-between mt-auto">
-            <span className="text-2xl font-bold text-blue-600">${product.price}</span>
+            <span className="text-2xl font-bold text-cyan-300">${product.price}</span>
             <button
               onClick={handleAddToCart}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-sm"
+              className="btn-primary px-4 py-2 rounded-lg text-sm"
               aria-label={t('addToCart')}
             >
               {t('addToCart')}
