@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { memo } from 'react';
 import Link from 'next/link';
 import { Product } from '@/types';
 import { useTranslations } from 'next-intl';
@@ -12,7 +13,7 @@ interface ProductCardProps {
   product: Product;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+function ProductCard({ product }: ProductCardProps) {
   const t = useTranslations('Products');
   const dispatch = useAppDispatch();
   const pathname = usePathname();
@@ -61,3 +62,5 @@ export default function ProductCard({ product }: ProductCardProps) {
     </Link>
   );
 }
+
+export default memo(ProductCard);
