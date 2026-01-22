@@ -1,0 +1,39 @@
+{
+  "HomePage": {
+    "title": "Welcome to Our Store",
+    "loading": "Loading products...",
+    "viewAllProducts": "View All Products",
+    "featuredProducts": "Featured Products"
+  },
+  "Products": {
+    "title": "All Products",
+    "filterByCategory": "Filter by Category",
+    "sortBy": "Sort By",
+    "priceRange": "Price Range",
+    "priceAscending": "Price: Low to High",
+    "priceDescending": "Price: High to Low",
+    "allCategories": "All Categories",
+    "addToCart": "Add to Cart"
+  },
+  "ProductDetail": {
+    "addToCart": "Add to Cart",
+    "description": "Description",
+    "category": "Category",
+    "price": "Price",
+    "backToProducts": "Back to Products"
+  },
+  "Cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "total": "Total",
+    "removeItem": "Remove",
+    "quantity": "Quantity",
+    "continueShopping": "Continue Shopping"
+  },
+  "Common": {
+    "home": "Home",
+    "products": "Products",
+    "cart": "Cart",
+    "language": "Language"
+  }
+}

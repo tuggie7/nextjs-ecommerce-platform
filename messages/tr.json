@@ -1,0 +1,39 @@
+{
+  "HomePage": {
+    "title": "Mağazamıza Hoş Geldiniz",
+    "loading": "Ürünler yükleniyor...",
+    "viewAllProducts": "Tüm Ürünleri Görüntüle",
+    "featuredProducts": "Öne Çıkan Ürünler"
+  },
+  "Products": {
+    "title": "Tüm Ürünler",
+    "filterByCategory": "Kategoriye Göre Filtrele",
+    "sortBy": "Sırala",
+    "priceRange": "Fiyat Aralığı",
+    "priceAscending": "Fiyat: Düşükten Yükseğe",
+    "priceDescending": "Fiyat: Yüksekten Düşüğe",
+    "allCategories": "Tüm Kategoriler",
+    "addToCart": "Sepete Ekle"
+  },
+  "ProductDetail": {
+    "addToCart": "Sepete Ekle",
+    "description": "Açıklama",
+    "category": "Kategori",
+    "price": "Fiyat",
+    "backToProducts": "Ürünlere Dön"
+  },
+  "Cart": {
+    "title": "Alışveriş Sepeti",
+    "empty": "Sepetiniz boş",
+    "total": "Toplam",
+    "removeItem": "Kaldır",
+    "quantity": "Adet",
+    "continueShopping": "Alışverişe Devam Et"
+  },
+  "Common": {
+    "home": "Ana Sayfa",
+    "products": "Ürünler",
+    "cart": "Sepet",
+    "language": "Dil"
+  }
+}
