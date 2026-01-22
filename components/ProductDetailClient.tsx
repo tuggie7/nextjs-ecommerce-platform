@@ -21,6 +21,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
   const pathname = usePathname();
   const locale = pathname.split('/')[1];
   const [added, setAdded] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
   const { show } = useToast();
 
   const categoryMap: Record<string, string> = {
@@ -49,16 +50,50 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
         ← {t('backToProducts')}
       </Link>
 
+      {/* Image Zoom Modal */}
+      {isZoomed && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out"
+          onClick={() => setIsZoomed(false)}
+        >
+          <button
+            className="absolute top-4 right-4 text-white text-5xl hover:text-gray-300 focus:outline-none z-10"
+            onClick={() => setIsZoomed(false)}
+            aria-label="Close"
+          >
+            ×
+          </button>
+          <div className="relative w-full h-full max-w-6xl max-h-[90vh] flex items-center justify-center">
+            <Image
+              src={product.image}
+              alt={product.title}
+              fill
+              className="object-contain drop-shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Product Image */}
-        <div className="relative h-96 md:h-[560px] glass rounded-2xl flex items-center justify-center">
+        <div 
+          className="relative h-96 md:h-[560px] glass rounded-2xl flex items-center justify-center overflow-hidden group cursor-zoom-in"
+          onClick={() => setIsZoomed(true)}
+        >
           <Image
             src={product.image}
             alt={product.title}
             fill
-            className="object-contain p-10 drop-shadow-2xl"
+            className="object-contain p-10 drop-shadow-2xl transition-transform duration-300 group-hover:scale-110"
             priority
           />
+          <div className="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607ZM10.5 7.5v6m3-3h-6" />
+            </svg>
+            <span>Click to zoom</span>
+          </div>
         </div>
 
         {/* Product Details */}
