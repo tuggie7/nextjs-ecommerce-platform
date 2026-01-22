@@ -28,7 +28,10 @@
     "total": "Total",
     "removeItem": "Remove",
     "quantity": "Quantity",
-    "continueShopping": "Continue Shopping"
+    "continueShopping": "Continue Shopping",
+    "cleared": "Cart cleared",
+    "removed": "Removed from cart",
+    "updated": "Quantity updated"
   },
   "Common": {
     "home": "Home",

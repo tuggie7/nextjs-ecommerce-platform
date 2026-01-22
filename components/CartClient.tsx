@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useToast } from '@/components/ToastProvider';
 
 export default function CartClient() {
   const t = useTranslations('Cart');
@@ -13,9 +14,11 @@ export default function CartClient() {
   const { items, total } = useAppSelector((state) => state.cart);
   const pathname = usePathname();
   const locale = pathname.split('/')[1];
+  const { show } = useToast();
 
   const handleQuantityChange = (id: number, quantity: number) => {
     dispatch(updateQuantity({ id, quantity }));
+    show(quantity <= 0 ? t('removed') : t('updated'));
   };
 
   if (items.length === 0) {
@@ -66,7 +69,10 @@ export default function CartClient() {
                     +
                   </button>
                   <button
-                    onClick={() => dispatch(removeFromCart(item.id))}
+                    onClick={() => {
+                      dispatch(removeFromCart(item.id));
+                      show(t('removed'));
+                    }}
                     className="ml-4 text-red-600 hover:underline"
                   >
                     {t('removeItem')}
@@ -89,7 +95,10 @@ export default function CartClient() {
           <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">Checkout</button>
           <button
             className="w-full mt-3 bg-gray-100 text-gray-800 py-3 rounded-lg hover:bg-gray-200"
-            onClick={() => dispatch(clearCart())}
+            onClick={() => {
+              dispatch(clearCart());
+              show(t('cleared'));
+            }}
           >
             Clear Cart
           </button>

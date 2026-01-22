@@ -28,7 +28,10 @@
     "total": "Toplam",
     "removeItem": "Kaldır",
     "quantity": "Adet",
-    "continueShopping": "Alışverişe Devam Et"
+    "continueShopping": "Alışverişe Devam Et",
+    "cleared": "Sepet temizlendi",
+    "removed": "Sepetten kaldırıldı",
+    "updated": "Adet güncellendi"
   },
   "Common": {
     "home": "Ana Sayfa",
