@@ -1,11 +1,14 @@
-import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { getProducts, getCategories } from '@/lib/api';
 import ProductsClient from '@/components/ProductsClient';
 
-export const metadata: Metadata = {
-  title: 'Products | E-Commerce Platform',
-  description: 'Browse our wide selection of products',
-};
+export async function generateMetadata({ params }: { params: { locale: string } }) {
+  const t = await getTranslations({ locale: params.locale, namespace: 'Products' });
+  return {
+    title: `${t('title')} | E-Commerce Platform`,
+    description: t('title'),
+  };
+}
 
 export const revalidate = 3600; // ISR: Revalidate every hour
 

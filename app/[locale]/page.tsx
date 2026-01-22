@@ -26,13 +26,13 @@ export default async function Home({
             <div className="space-y-7">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-gray-200 shadow-inner shadow-cyan-500/10">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(74,222,128,0.8)]" aria-hidden />
-                <span>Premium picks • Same-day dispatch</span>
+                <span>{t('tagline')}</span>
               </div>
               <h1 className="text-5xl md:text-6xl font-bold leading-tight text-white text-balance">
                 {t('title')}
               </h1>
               <p className="text-lg md:text-xl text-gray-200/90 max-w-2xl">
-                Discover curated essentials, cult favorites, and future classics. Performance, polish, and speed—ready when you are.
+                {t('description')}
               </p>
               <div className="flex flex-wrap items-center gap-4">
                 <Link 
@@ -45,21 +45,21 @@ export default async function Home({
                   href={`/${locale}/products`}
                   className="btn-ghost px-6 py-3 rounded-lg text-sm focus-ring hover:bg-white/5"
                 >
-                  Explore collections
+                  {t('explore')}
                 </Link>
               </div>
               <div className="flex flex-wrap gap-3 text-sm text-gray-200/90">
                 <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2">
                   <span className="h-2 w-2 rounded-full bg-cyan-400" aria-hidden />
-                  <span>ISR cached</span>
+                  <span>{t('pillIsr')}</span>
                 </div>
                 <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2">
                   <span className="h-2 w-2 rounded-full bg-purple-400" aria-hidden />
-                  <span>SEO ready</span>
+                  <span>{t('pillSeo')}</span>
                 </div>
                 <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2">
                   <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden />
-                  <span>Fast checkout</span>
+                  <span>{t('pillFast')}</span>
                 </div>
               </div>
             </div>
@@ -70,40 +70,40 @@ export default async function Home({
                 <div className="floating-card rounded-3xl border border-white/10 bg-white/5 backdrop-blur shadow-2xl shadow-black/40 p-5 md:p-6">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.2em] text-gray-400">Spotlight</p>
-                      <p className="text-lg font-semibold text-white">Statement Sneakers</p>
+                      <p className="text-xs uppercase tracking-[0.2em] text-gray-400">{t('spotlight')}</p>
+                      <p className="text-lg font-semibold text-white">{t('spotlightTitle')}</p>
                     </div>
-                    <span className="rounded-full bg-emerald-500/15 text-emerald-300 text-xs px-3 py-1 border border-emerald-400/30">In stock</span>
+                    <span className="rounded-full bg-emerald-500/15 text-emerald-300 text-xs px-3 py-1 border border-emerald-400/30">{t('stock')}</span>
                   </div>
                   <div className="relative h-48 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent overflow-hidden">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(34,211,238,0.25),transparent_45%)]" aria-hidden />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(124,58,237,0.25),transparent_40%)]" aria-hidden />
                     <div className="absolute inset-6 rounded-xl border border-white/10 bg-black/20 flex items-center justify-center">
-                      <span className="text-gray-200 text-sm">Product preview</span>
+                      <span className="text-gray-200 text-sm">{t('preview')}</span>
                     </div>
                   </div>
                   <div className="mt-4 flex items-center justify-between text-sm text-gray-200">
                     <div className="flex items-center gap-3">
                       <span className="h-2 w-2 rounded-full bg-cyan-400" />
-                      <span>48h delivery</span>
+                      <span>{t('delivery')}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="h-2 w-2 rounded-full bg-purple-400" />
-                      <span>Free returns</span>
+                      <span>{t('returns')}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-4 flex flex-col justify-between shadow-lg shadow-black/30">
-                    <div className="text-sm text-gray-300">Satisfaction</div>
+                    <div className="text-sm text-gray-300">{t('satisfaction')}</div>
                     <div className="text-3xl font-bold text-white">4.9/5</div>
-                    <div className="text-xs text-gray-400">Based on recent orders</div>
+                    <div className="text-xs text-gray-400">{t('basedOn')}</div>
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-cyan-500/15 via-white/5 to-purple-500/15 p-4 flex flex-col justify-between shadow-lg shadow-black/30">
-                    <div className="text-sm text-gray-100">Live stock</div>
-                    <div className="text-3xl font-bold text-white">Ready</div>
-                    <div className="text-xs text-gray-100/80">Real-time availability</div>
+                    <div className="text-sm text-gray-100">{t('liveStock')}</div>
+                    <div className="text-3xl font-bold text-white">{t('ready')}</div>
+                    <div className="text-xs text-gray-100/80">{t('realTime')}</div>
                   </div>
                 </div>
               </div>
