@@ -5,8 +5,9 @@ import { memo } from 'react';
 import Link from 'next/link';
 import { Product } from '@/types';
 import { useTranslations } from 'next-intl';
-import { useAppDispatch } from '@/lib/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
 import { addToCart } from '@/lib/redux/cartSlice';
+import { toggleWishlist } from '@/lib/redux/wishlistSlice';
 import { usePathname } from 'next/navigation';
 import { useToast } from '@/components/ToastProvider';
 
@@ -21,6 +22,8 @@ function ProductCard({ product }: ProductCardProps) {
   const pathname = usePathname();
   const locale = pathname.split('/')[1];
   const { show } = useToast();
+  const wishlistItems = useAppSelector((state) => state.wishlist.items);
+  const isInWishlist = wishlistItems.some(item => item.id === product.id);
 
   const categoryMap: Record<string, string> = {
     "men's clothing": t('category.mensClothing'),
@@ -38,9 +41,24 @@ function ProductCard({ product }: ProductCardProps) {
     show(tc('addedToCart'));
   };
 
+  const handleToggleWishlist = (e: React.MouseEvent) => {
+    e.preventDefault();
+    dispatch(toggleWishlist(product));
+    show(isInWishlist ? tc('removedFromWishlist') : tc('addedToWishlist'));
+  };
+
   return (
     <Link href={`/${locale}/products/${product.id}`}>
-      <div className="glass rounded-2xl overflow-hidden card-hover h-full flex flex-col border border-white/5">
+      <div className="glass rounded-2xl overflow-hidden card-hover h-full flex flex-col border border-white/5 relative group">
+        <button
+          onClick={handleToggleWishlist}
+          className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 backdrop-blur flex items-center justify-center hover:bg-black/80 transition focus-ring"
+          aria-label={isInWishlist ? 'Remove from wishlist' : 'Add to wishlist'}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill={isInWishlist ? 'currentColor' : 'none'} viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-5 h-5 ${isInWishlist ? 'text-red-400' : 'text-white'}`}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+          </svg>
+        </button>
         <div className="relative h-64 bg-gradient-to-br from-white/5 via-white/2 to-transparent">
           <Image
             src={product.image}
