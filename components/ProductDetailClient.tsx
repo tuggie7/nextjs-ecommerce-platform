@@ -23,6 +23,16 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
   const [added, setAdded] = useState(false);
   const { show } = useToast();
 
+  const categoryMap: Record<string, string> = {
+    "men's clothing": t('category.mensClothing'),
+    "women's clothing": t('category.womensClothing'),
+    "jewelery": t('category.jewelery'),
+    "electronics": t('category.electronics'),
+  };
+
+  const localizedCategory = categoryMap[product.category] ?? product.category;
+  const priceFormatter = new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' });
+
   const handleAddToCart = () => {
     dispatch(addToCart(product));
     setAdded(true);
@@ -53,7 +63,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
         {/* Product Details */}
         <div className="space-y-6">
-          <span className="text-sm text-cyan-200 uppercase tracking-widest">{product.category}</span>
+          <span className="text-sm text-cyan-200 uppercase tracking-widest">{localizedCategory}</span>
           <h1 className="text-4xl font-bold text-white leading-tight">{product.title}</h1>
           
           <div className="flex items-center text-gray-200">
@@ -65,7 +75,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           </div>
 
           <div className="text-4xl font-bold text-cyan-300">
-            ${product.price}
+            {priceFormatter.format(product.price)}
           </div>
 
           <div className="space-y-3">

@@ -22,6 +22,16 @@ function ProductCard({ product }: ProductCardProps) {
   const locale = pathname.split('/')[1];
   const { show } = useToast();
 
+  const categoryMap: Record<string, string> = {
+    "men's clothing": t('category.mensClothing'),
+    "women's clothing": t('category.womensClothing'),
+    "jewelery": t('category.jewelery'),
+    "electronics": t('category.electronics'),
+  };
+
+  const localizedCategory = categoryMap[product.category] ?? product.category;
+  const priceFormatter = new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' });
+
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     dispatch(addToCart(product));
@@ -42,7 +52,7 @@ function ProductCard({ product }: ProductCardProps) {
         </div>
         
         <div className="p-5 flex flex-col flex-grow">
-          <span className="text-xs text-cyan-200 uppercase mb-2 tracking-widest">{product.category}</span>
+          <span className="text-xs text-cyan-200 uppercase mb-2 tracking-widest">{localizedCategory}</span>
           <h3 className="text-lg font-semibold mb-3 line-clamp-2 flex-grow text-white">{product.title}</h3>
           
           <div className="flex items-center mb-3 text-sm text-gray-200 space-x-2">
@@ -53,7 +63,7 @@ function ProductCard({ product }: ProductCardProps) {
           </div>
           
           <div className="flex items-center justify-between mt-auto">
-            <span className="text-2xl font-bold text-cyan-300">${product.price}</span>
+            <span className="text-2xl font-bold text-cyan-300">{priceFormatter.format(product.price)}</span>
             <button
               onClick={handleAddToCart}
               className="btn-primary px-4 py-2 rounded-lg text-sm focus-ring"

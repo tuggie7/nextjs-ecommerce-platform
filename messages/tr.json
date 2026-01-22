@@ -35,7 +35,13 @@
     "addToCart": "Sepete Ekle",
     "defaultSort": "Varsayılan",
     "catalog": "Katalog",
-    "empty": "Ürün bulunamadı"
+    "empty": "Ürün bulunamadı",
+    "category": {
+      "mensClothing": "Erkek Giyim",
+      "womensClothing": "Kadın Giyim",
+      "jewelery": "Mücevher",
+      "electronics": "Elektronik"
+    }
   },
   "ProductDetail": {
     "addToCart": "Sepete Ekle",
@@ -45,7 +51,13 @@
     "backToProducts": "Ürünlere Dön",
     "reviews": "yorum",
     "addedCheck": "✓ Sepete eklendi",
-    "notFoundTitle": "Ürün Bulunamadı"
+    "notFoundTitle": "Ürün Bulunamadı",
+    "category": {
+      "mensClothing": "Erkek Giyim",
+      "womensClothing": "Kadın Giyim",
+      "jewelery": "Mücevher",
+      "electronics": "Elektronik"
+    }
   },
   "Cart": {
     "title": "Alışveriş Sepeti",

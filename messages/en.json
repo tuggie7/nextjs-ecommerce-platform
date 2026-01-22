@@ -35,7 +35,13 @@
     "addToCart": "Add to Cart",
     "defaultSort": "Default",
     "catalog": "Catalog",
-    "empty": "No products found"
+    "empty": "No products found",
+    "category": {
+      "mensClothing": "Men's Clothing",
+      "womensClothing": "Women's Clothing",
+      "jewelery": "Jewelery",
+      "electronics": "Electronics"
+    }
   },
   "ProductDetail": {
     "addToCart": "Add to Cart",
@@ -45,7 +51,13 @@
     "backToProducts": "Back to Products",
     "reviews": "reviews",
     "addedCheck": "✓ Added to Cart",
-    "notFoundTitle": "Product Not Found"
+    "notFoundTitle": "Product Not Found",
+    "category": {
+      "mensClothing": "Men's Clothing",
+      "womensClothing": "Women's Clothing",
+      "jewelery": "Jewelery",
+      "electronics": "Electronics"
+    }
   },
   "Cart": {
     "title": "Shopping Cart",
