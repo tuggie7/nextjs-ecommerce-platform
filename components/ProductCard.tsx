@@ -56,7 +56,7 @@ function ProductCard({ product }: ProductCardProps) {
             <span className="text-2xl font-bold text-cyan-300">${product.price}</span>
             <button
               onClick={handleAddToCart}
-              className="btn-primary px-4 py-2 rounded-lg text-sm"
+              className="btn-primary px-4 py-2 rounded-lg text-sm focus-ring"
               aria-label={t('addToCart')}
             >
               {t('addToCart')}

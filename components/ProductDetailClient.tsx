@@ -77,8 +77,8 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             onClick={handleAddToCart}
             className={`w-full md:w-auto px-8 py-4 rounded-lg font-semibold text-lg transition ${
               added 
-                ? 'bg-green-500 text-[#0b1021]' 
-                : 'btn-primary'
+                ? 'bg-green-500 text-[#0b1021] focus-ring' 
+                : 'btn-primary focus-ring'
             }`}
           >
             {added ? '✓ Added to Cart' : t('addToCart')}

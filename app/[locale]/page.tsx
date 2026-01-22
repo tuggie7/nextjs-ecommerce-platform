@@ -16,7 +16,7 @@ export default async function Home({
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden py-24">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-800/50 via-transparent to-cyan-500/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-800/50 via-transparent to-cyan-500/20 animate-hero-bg" />
         <div className="container mx-auto px-4 relative">
           <div className="max-w-3xl space-y-6">
             <span className="inline-flex items-center px-4 py-2 rounded-full badge text-sm">Premium selection • Fast delivery</span>
@@ -29,7 +29,7 @@ export default async function Home({
             <div className="flex flex-wrap items-center gap-4">
               <Link 
                 href={`/${locale}/products`}
-                className="btn-primary px-7 py-3 rounded-lg"
+                className="btn-primary px-7 py-3 rounded-lg focus-ring"
               >
                 {t('viewAllProducts')}
               </Link>
