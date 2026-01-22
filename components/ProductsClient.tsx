@@ -5,6 +5,7 @@ import { Product } from '@/types';
 import ProductCard from '@/components/ProductCard';
 import { useTranslations } from 'next-intl';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import { getProductDescription } from '@/lib/translations';
 
 interface ProductsClientProps {
   initialProducts: Product[];
@@ -16,6 +17,7 @@ export default function ProductsClient({ initialProducts, categories }: Products
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
+  const locale = pathname.split('/')[1];
   const [products, setProducts] = useState<Product[]>(initialProducts);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(initialProducts);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -58,11 +60,13 @@ export default function ProductsClient({ initialProducts, categories }: Products
     // Filter by search query
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
-      result = result.filter(p => 
-        p.title.toLowerCase().includes(query) || 
-        p.description.toLowerCase().includes(query) ||
-        p.category.toLowerCase().includes(query)
-      );
+      result = result.filter(p => {
+        const translatedDesc = getProductDescription(p.id, locale);
+        const descToSearch = translatedDesc || p.description;
+        return p.title.toLowerCase().includes(query) || 
+          descToSearch.toLowerCase().includes(query) ||
+          p.category.toLowerCase().includes(query);
+      });
     }
 
     // Filter by category

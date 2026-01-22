@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useToast } from '@/components/ToastProvider';
+import { getProductDescription } from '@/lib/translations';
 
 interface ProductDetailClientProps {
   product: Product;
@@ -115,7 +116,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
           <div className="space-y-3">
             <h2 className="text-lg font-semibold text-white">{t('description')}</h2>
-            <p className="text-gray-200 leading-relaxed">{product.description}</p>
+            <p className="text-gray-200 leading-relaxed">{getProductDescription(product.id, locale) || product.description}</p>
           </div>
 
           <button
