@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { useAppSelector } from '@/lib/redux/hooks';
-import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 
 export default function Header() {
   const t = useTranslations('Common');
