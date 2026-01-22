@@ -36,6 +36,7 @@
     "defaultSort": "Default",
     "catalog": "Catalog",
     "empty": "No products found",
+    "searchPlaceholder": "Search products by name, description or category...",
     "category": {
       "mensClothing": "Men's Clothing",
       "womensClothing": "Women's Clothing",

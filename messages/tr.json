@@ -36,6 +36,7 @@
     "defaultSort": "Varsayılan",
     "catalog": "Katalog",
     "empty": "Ürün bulunamadı",
+    "searchPlaceholder": "Ürün adı, açıklama veya kategoriye göre ara...",
     "category": {
       "mensClothing": "Erkek Giyim",
       "womensClothing": "Kadın Giyim",

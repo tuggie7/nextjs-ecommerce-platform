@@ -21,6 +21,7 @@ export default function ProductsClient({ initialProducts, categories }: Products
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [sortBy, setSortBy] = useState<string>('default');
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Initialize state from URL
   useEffect(() => {
@@ -54,6 +55,16 @@ export default function ProductsClient({ initialProducts, categories }: Products
   useEffect(() => {
     let result = [...products];
 
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      result = result.filter(p => 
+        p.title.toLowerCase().includes(query) || 
+        p.description.toLowerCase().includes(query) ||
+        p.category.toLowerCase().includes(query)
+      );
+    }
+
     // Filter by category
     if (selectedCategory !== 'all') {
       result = result.filter(p => p.category === selectedCategory);
@@ -70,7 +81,7 @@ export default function ProductsClient({ initialProducts, categories }: Products
     }
 
     setFilteredProducts(result);
-  }, [selectedCategory, sortBy, priceRange, products]);
+  }, [selectedCategory, sortBy, priceRange, products, searchQuery]);
 
   return (
     <div className="container mx-auto px-4 py-10">
@@ -78,6 +89,40 @@ export default function ProductsClient({ initialProducts, categories }: Products
         <div>
           <p className="text-sm text-gray-400 uppercase tracking-widest">{t('catalog')}</p>
           <h1 className="text-4xl font-bold text-white">{t('title')}</h1>
+        </div>
+      </div>
+
+      {/* Search Bar */}
+      <div className="mb-6">
+        <div className="relative max-w-2xl">
+          <input
+            type="text"
+            placeholder={t('searchPlaceholder')}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-[#0f172a] border border-white/10 rounded-lg pl-12 pr-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-400 focus:border-transparent"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          </svg>
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+              aria-label="Clear search"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
         </div>
       </div>
 
