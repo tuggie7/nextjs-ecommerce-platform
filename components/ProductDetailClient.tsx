@@ -8,6 +8,7 @@ import { addToCart } from '@/lib/redux/cartSlice';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { useToast } from '@/components/ToastProvider';
 
 interface ProductDetailClientProps {
   product: Product;
@@ -15,15 +16,18 @@ interface ProductDetailClientProps {
 
 export default function ProductDetailClient({ product }: ProductDetailClientProps) {
   const t = useTranslations('ProductDetail');
+  const tc = useTranslations('Common');
   const dispatch = useAppDispatch();
   const pathname = usePathname();
   const locale = pathname.split('/')[1];
   const [added, setAdded] = useState(false);
+  const { show } = useToast();
 
   const handleAddToCart = () => {
     dispatch(addToCart(product));
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
+    show(tc('addedToCart'));
   };
 
   return (

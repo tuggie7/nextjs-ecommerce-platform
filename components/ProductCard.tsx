@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl';
 import { useAppDispatch } from '@/lib/redux/hooks';
 import { addToCart } from '@/lib/redux/cartSlice';
 import { usePathname } from 'next/navigation';
+import { useToast } from '@/components/ToastProvider';
 
 interface ProductCardProps {
   product: Product;
@@ -15,13 +16,16 @@ interface ProductCardProps {
 
 function ProductCard({ product }: ProductCardProps) {
   const t = useTranslations('Products');
+  const tc = useTranslations('Common');
   const dispatch = useAppDispatch();
   const pathname = usePathname();
   const locale = pathname.split('/')[1];
+  const { show } = useToast();
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     dispatch(addToCart(product));
+    show(tc('addedToCart'));
   };
 
   return (

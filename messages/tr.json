@@ -34,6 +34,7 @@
     "home": "Ana Sayfa",
     "products": "Ürünler",
     "cart": "Sepet",
-    "language": "Dil"
+    "language": "Dil",
+    "addedToCart": "Sepete eklendi"
   }
 }

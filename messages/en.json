@@ -34,6 +34,7 @@
     "home": "Home",
     "products": "Products",
     "cart": "Cart",
-    "language": "Language"
+    "language": "Language",
+    "addedToCart": "Added to cart"
   }
 }
