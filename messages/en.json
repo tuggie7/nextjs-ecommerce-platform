@@ -77,5 +77,11 @@
     "language": "Language",
     "addedToCart": "Added to cart",
     "siteName": "E-Commerce Platform"
+  },
+  "NotFound": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back to Home",
+    "browseProducts": "Browse Products"
   }
 }

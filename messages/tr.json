@@ -77,5 +77,11 @@
     "language": "Dil",
     "addedToCart": "Sepete eklendi",
     "siteName": "E-Ticaret Platformu"
+  },
+  "NotFound": {
+    "title": "Sayfa Bulunamadı",
+    "description": "Aradığınız sayfa mevcut değil veya taşınmış olabilir.",
+    "backHome": "Ana Sayfaya Dön",
+    "browseProducts": "Ürünleri İncele"
   }
 }
