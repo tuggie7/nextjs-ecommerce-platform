@@ -41,11 +41,11 @@ export default function SpotlightPreview({ products, locale, intervalMs = 5000 }
   const priceFormatter = new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' });
 
   return (
-    <div className="relative h-56 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent overflow-hidden border border-white/10">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(34,211,238,0.18),transparent_45%)]" aria-hidden />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(124,58,237,0.18),transparent_40%)]" aria-hidden />
+    <div className="relative h-56 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent overflow-hidden border border-white/10 isolate">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(34,211,238,0.18),transparent_45%)] pointer-events-none" aria-hidden />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(124,58,237,0.18),transparent_40%)] pointer-events-none" aria-hidden />
 
-      <div className="grid grid-cols-2 h-full">
+      <div className="grid grid-cols-2 h-full relative z-10">
         <div className="flex flex-col justify-center gap-2 px-4">
           <p className="text-xs uppercase tracking-[0.18em] text-cyan-200">{t('preview')}</p>
           <p className="text-lg font-semibold text-white line-clamp-2">{product.title}</p>

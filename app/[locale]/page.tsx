@@ -67,7 +67,7 @@ export default async function Home({
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-6 rounded-[32px] bg-gradient-to-br from-cyan-400/10 via-white/5 to-purple-500/10 blur-2xl" aria-hidden />
+              <div className="absolute -inset-6 rounded-[32px] bg-gradient-to-br from-cyan-400/10 via-white/5 to-purple-500/10 blur-2xl pointer-events-none" aria-hidden />
               <div className="relative grid gap-4">
                 <div className="floating-card rounded-3xl border border-white/10 bg-white/5 backdrop-blur shadow-2xl shadow-black/40 p-5 md:p-6">
                   <div className="flex items-center justify-between mb-4">
