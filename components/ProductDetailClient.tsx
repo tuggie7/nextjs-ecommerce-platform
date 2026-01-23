@@ -7,11 +7,13 @@ import { useAppDispatch } from '@/lib/redux/hooks';
 import { addToCart } from '@/lib/redux/cartSlice';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useToast } from '@/components/ToastProvider';
 import { getProductDescription } from '@/lib/translations';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RelatedProducts from '@/components/RelatedProducts';
+import RecentlyViewed, { addToRecentlyViewed } from '@/components/RecentlyViewed';
+import { useEffect } from 'react';
 
 interface ProductDetailClientProps {
   product: Product;
@@ -37,6 +39,11 @@ export default function ProductDetailClient({ product, allProducts }: ProductDet
 
   const localizedCategory = categoryMap[product.category] ?? product.category;
   const priceFormatter = new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' });
+
+  // Track recently viewed products
+  useEffect(() => {
+    addToRecentlyViewed(product);
+  }, [product]);
 
   const handleAddToCart = () => {
     dispatch(addToCart(product));
@@ -139,6 +146,9 @@ export default function ProductDetailClient({ product, allProducts }: ProductDet
 
       {/* Related Products */}
       <RelatedProducts products={allProducts} currentProduct={product} />
+      
+      {/* Recently Viewed */}
+      <RecentlyViewed currentProductId={product.id} />
     </div>
   );
 }

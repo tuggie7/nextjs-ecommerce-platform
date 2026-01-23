@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import { getProducts } from '@/lib/api';
 import ProductCard from '@/components/ProductCard';
+import RecentlyViewedSection from '@/components/RecentlyViewedSection';
 
 export default async function Home({ 
   params: { locale } 
@@ -128,6 +129,11 @@ export default async function Home({
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
+      </section>
+
+      {/* Recently Viewed Products */}
+      <section className="container mx-auto px-4 mb-16">
+        <RecentlyViewedSection />
       </section>
     </div>
   );
