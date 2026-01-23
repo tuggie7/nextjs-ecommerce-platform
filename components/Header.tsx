@@ -16,6 +16,28 @@ export default function Header() {
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
+
+  // Close menu on Esc key press
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+    
+    if (isMenuOpen) {
+      document.addEventListener('keydown', handleEscape);
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
   
   const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
@@ -39,7 +61,16 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-[#0b1021] shadow-lg shadow-black/30">
+    <>
+      {/* Skip to main content link for screen readers */}
+      <a 
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-cyan-500 focus:text-white focus:rounded focus:outline-none focus:ring-2 focus:ring-cyan-300"
+      >
+        Skip to main content
+      </a>
+      
+      <header className="sticky top-0 z-50 border-b border-white/5 bg-[#0b1021] shadow-lg shadow-black/30" role="banner">
       <div className="container mx-auto px-4 relative">
         <div className="flex items-center justify-between h-16">
           <Link
@@ -171,5 +202,6 @@ export default function Header() {
         )}
       </div>
     </header>
+    </>
   );
 }

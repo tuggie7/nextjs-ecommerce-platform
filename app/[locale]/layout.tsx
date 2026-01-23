@@ -51,7 +51,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <Providers>
             <Header />
-            <main className="flex-grow">
+            <main id="main-content" className="flex-grow" role="main">
               {children}
             </main>
             <Footer />
