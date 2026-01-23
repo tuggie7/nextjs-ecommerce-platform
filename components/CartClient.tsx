@@ -134,7 +134,7 @@ export default function CartClient() {
         <div className="glass rounded-2xl p-6 h-fit border border-white/5">
           <div className="flex items-center justify-between mb-4">
             <span className="text-gray-300">{t('total')}</span>
-            <span className="text-2xl font-bold text-white">${total.toFixed(2)}</span>
+            <span className="text-2xl font-bold text-white">${(total || 0).toFixed(2)}</span>
           </div>
           <Link href={`/${locale}/checkout`} className="block w-full btn-primary py-3 rounded-lg text-center focus-ring">
             Checkout

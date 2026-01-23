@@ -46,8 +46,8 @@ export const cartSlice = createSlice({
       state.total = 0;
     },
     hydrate: (state, action: PayloadAction<CartState>) => {
-      state.items = action.payload.items;
-      state.total = action.payload.total;
+      state.items = action.payload.items || [];
+      state.total = calculateTotal(state.items);
     },
   },
 });
