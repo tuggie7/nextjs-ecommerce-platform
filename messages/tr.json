@@ -51,8 +51,7 @@
     "price": "Fiyat",
     "backToProducts": "Ürünlere Dön",
     "reviews": "yorum",
-    "addedCheck": "✓ Sepete eklendi",
-    "notFoundTitle": "Ürün Bulunamadı",
+    "addedCheck": "✓ Sepete eklendi",    "relatedProducts": "İlginizi Çekebilir",    "notFoundTitle": "Ürün Bulunamadı",
     "category": {
       "mensClothing": "Erkek Giyim",
       "womensClothing": "Kadın Giyim",

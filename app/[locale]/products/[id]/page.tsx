@@ -45,8 +45,11 @@ export const revalidate = 3600; // ISR: Revalidate every hour
 
 export default async function ProductDetailPage({ params }: Props) {
   try {
-    const product = await getProduct(params.id);
-    return <ProductDetailClient product={product} />;
+    const [product, allProducts] = await Promise.all([
+      getProduct(params.id),
+      getProducts()
+    ]);
+    return <ProductDetailClient product={product} allProducts={allProducts} />;
   } catch {
     notFound();
   }

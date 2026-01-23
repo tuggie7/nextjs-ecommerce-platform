@@ -11,12 +11,14 @@ import { useState } from 'react';
 import { useToast } from '@/components/ToastProvider';
 import { getProductDescription } from '@/lib/translations';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import RelatedProducts from '@/components/RelatedProducts';
 
 interface ProductDetailClientProps {
   product: Product;
+  allProducts: Product[];
 }
 
-export default function ProductDetailClient({ product }: ProductDetailClientProps) {
+export default function ProductDetailClient({ product, allProducts }: ProductDetailClientProps) {
   const t = useTranslations('ProductDetail');
   const tc = useTranslations('Common');
   const dispatch = useAppDispatch();
@@ -134,6 +136,9 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           </button>
         </div>
       </div>
+
+      {/* Related Products */}
+      <RelatedProducts products={allProducts} currentProduct={product} />
     </div>
   );
 }
