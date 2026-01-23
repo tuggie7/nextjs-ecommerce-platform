@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getProducts } from '@/lib/api';
 import ProductCard from '@/components/ProductCard';
 import RecentlyViewedSection from '@/components/RecentlyViewedSection';
@@ -12,6 +13,8 @@ export default async function Home({
   const t = await getTranslations('HomePage');
   const products = await getProducts();
   const featuredProducts = products.slice(0, 4); // First 4 products
+  const spotlightProduct = featuredProducts[0] ?? products[0];
+  const priceFormatter = new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' });
 
   return (
     <div className="min-h-screen">
@@ -76,14 +79,43 @@ export default async function Home({
                     </div>
                     <span className="rounded-full bg-emerald-500/15 text-emerald-300 text-xs px-3 py-1 border border-emerald-400/30">{t('stock')}</span>
                   </div>
-                  <div className="relative h-48 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent overflow-hidden">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(34,211,238,0.25),transparent_45%)]" aria-hidden />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(124,58,237,0.25),transparent_40%)]" aria-hidden />
-                    <div className="absolute inset-6 rounded-xl border border-white/10 bg-black/20 flex items-center justify-center">
-                      <span className="text-gray-200 text-sm">{t('preview')}</span>
-                    </div>
+                  <div className="relative h-56 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent overflow-hidden border border-white/10">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(34,211,238,0.18),transparent_45%)]" aria-hidden />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(124,58,237,0.18),transparent_40%)]" aria-hidden />
+
+                    {spotlightProduct ? (
+                      <div className="grid grid-cols-2 h-full">
+                        <div className="flex flex-col justify-center gap-2 px-4">
+                          <p className="text-xs uppercase tracking-[0.18em] text-cyan-200">{t('preview')}</p>
+                          <p className="text-lg font-semibold text-white line-clamp-2">{spotlightProduct.title}</p>
+                          <p className="text-2xl font-bold text-cyan-300">{priceFormatter.format(spotlightProduct.price)}</p>
+                          <div className="flex items-center gap-2 text-sm text-gray-200">
+                            <span className="text-yellow-300">★</span>
+                            <span>{spotlightProduct.rating.rate} ({spotlightProduct.rating.count})</span>
+                          </div>
+                          <Link
+                            href={`/${locale}/products/${spotlightProduct.id}`}
+                            className="inline-flex items-center gap-2 text-sm text-cyan-200 hover:text-cyan-100"
+                          >
+                            {t('preview')} →
+                          </Link>
+                        </div>
+                        <div className="relative">
+                          <Image
+                            src={spotlightProduct.image}
+                            alt={spotlightProduct.title}
+                            fill
+                            className="object-contain p-6 drop-shadow-2xl"
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="absolute inset-6 rounded-xl border border-white/10 bg-black/20 flex items-center justify-center">
+                        <span className="text-gray-200 text-sm">{t('preview')}</span>
+                      </div>
+                    )}
                   </div>
-                  <div className="mt-4 flex items-center justify-between text-sm text-gray-200">
+                  <div className="mt-4 grid grid-cols-2 gap-4 text-sm text-gray-200">
                     <div className="flex items-center gap-3">
                       <span className="h-2 w-2 rounded-full bg-cyan-400" />
                       <span>{t('delivery')}</span>
