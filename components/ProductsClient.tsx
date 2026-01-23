@@ -192,21 +192,42 @@ export default function ProductsClient({ initialProducts, categories }: Products
       </div>
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filteredProducts.map((product, index) => (
-          <div
-            key={product.id}
-            className="animate-in fade-in slide-in-from-bottom-4 duration-300"
-            style={{ animationDelay: `${index * 50}ms`, animationFillMode: 'backwards' }}
-          >
-            <ProductCard product={product} />
+      {filteredProducts.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {filteredProducts.map((product, index) => (
+            <div
+              key={product.id}
+              className="animate-in fade-in slide-in-from-bottom-4 duration-300"
+              style={{ animationDelay: `${index * 50}ms`, animationFillMode: 'backwards' }}
+            >
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center py-16">
+          <div className="glass rounded-2xl p-12 max-w-md text-center border border-white/5">
+            <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-white/5 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12 text-gray-400">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607ZM13.5 10.5h-6" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold mb-2 text-white">No products found</h3>
+            <p className="text-gray-400 mb-6">
+              Try adjusting your filters or search query
+            </p>
+            <button
+              onClick={() => {
+                setSearchQuery('');
+                setSelectedCategory('all');
+                setPriceRange([0, 1000]);
+                setSortBy('default');
+              }}
+              className="btn-primary px-6 py-2 rounded-lg"
+            >
+              Clear Filters
+            </button>
           </div>
-        ))}
-      </div>
-
-      {filteredProducts.length === 0 && (
-        <div className="text-center py-12 text-gray-300">
-          <p className="text-lg">{t('empty')}</p>
         </div>
       )}
     </div>
