@@ -13,7 +13,6 @@ import { getProductDescription } from '@/lib/translations';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RelatedProducts from '@/components/RelatedProducts';
 import RecentlyViewed, { addToRecentlyViewed } from '@/components/RecentlyViewed';
-import { useEffect } from 'react';
 
 interface ProductDetailClientProps {
   product: Product;
