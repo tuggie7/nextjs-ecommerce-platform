@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
 import { removeFromCart, updateQuantity, clearCart } from '@/lib/redux/cartSlice';
 import Image from 'next/image';
@@ -18,11 +18,32 @@ export default function CartClient() {
   const locale = pathname.split('/')[1];
   const { show } = useToast();
   const [zoomedImage, setZoomedImage] = useState<{ src: string; title: string } | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleQuantityChange = (id: number, quantity: number) => {
     dispatch(updateQuantity({ id, quantity }));
     show(quantity <= 0 ? t('removed') : t('updated'));
   };
+
+  // Prevent hydration mismatch by not rendering until client-side
+  if (!mounted) {
+    return (
+      <div className="container mx-auto px-4 py-16">
+        <Breadcrumbs />
+        <div className="animate-pulse">
+          <div className="h-8 w-48 rounded bg-white/10 mb-6" />
+          <div className="space-y-4">
+            <div className="h-32 rounded-2xl bg-white/5" />
+            <div className="h-32 rounded-2xl bg-white/5" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (items.length === 0) {
     return (
