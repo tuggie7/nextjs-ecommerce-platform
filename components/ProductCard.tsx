@@ -47,6 +47,22 @@ function ProductCard({ product }: ProductCardProps) {
     show(isInWishlist ? tc('removedFromWishlist') : tc('addedToWishlist'));
   };
 
+  // Determine badge
+  const getBadge = () => {
+    if (product.rating.rate >= 4.5) {
+      return { text: 'Popular', color: 'bg-gradient-to-r from-amber-500 to-orange-500' };
+    }
+    if (product.id <= 5) {
+      return { text: 'New', color: 'bg-gradient-to-r from-cyan-500 to-blue-500' };
+    }
+    if (product.price < 50) {
+      return { text: 'Best Price', color: 'bg-gradient-to-r from-green-500 to-emerald-500' };
+    }
+    return null;
+  };
+
+  const badge = getBadge();
+
   return (
     <Link href={`/${locale}/products/${product.id}`}>
       <div className="glass rounded-2xl overflow-hidden card-hover h-full flex flex-col border border-white/5 relative group">
@@ -60,6 +76,11 @@ function ProductCard({ product }: ProductCardProps) {
           </svg>
         </button>
         <div className="relative h-64 bg-gradient-to-br from-white/5 via-white/2 to-transparent">
+          {badge && (
+            <div className={`absolute top-4 left-4 z-10 px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg ${badge.color}`}>
+              {badge.text}
+            </div>
+          )}
           <Image
             src={product.image}
             alt={product.title}
