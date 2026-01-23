@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Product } from '@/types';
 import ProductCard from '@/components/ProductCard';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { useTranslations } from 'next-intl';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { getProductDescription } from '@/lib/translations';
@@ -89,6 +90,8 @@ export default function ProductsClient({ initialProducts, categories }: Products
 
   return (
     <div className="container mx-auto px-4 py-10">
+      <Breadcrumbs />
+      
       <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
         <div>
           <p className="text-sm text-gray-400 uppercase tracking-widest">{t('catalog')}</p>

@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useToast } from '@/components/ToastProvider';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function CartClient() {
   const t = useTranslations('Cart');
@@ -37,6 +38,8 @@ export default function CartClient() {
 
   return (
     <div className="container mx-auto px-4 py-10">
+      <Breadcrumbs />
+      
       <h1 className="text-3xl font-bold mb-6 text-white">{t('title')}</h1>
 
       {/* Image Zoom Modal */}

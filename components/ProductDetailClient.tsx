@@ -10,6 +10,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useToast } from '@/components/ToastProvider';
 import { getProductDescription } from '@/lib/translations';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 interface ProductDetailClientProps {
   product: Product;
@@ -44,6 +45,8 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
   return (
     <div className="container mx-auto px-4 py-10">
+      <Breadcrumbs />
+      
       <Link 
         href={`/${locale}/products`}
         className="text-cyan-300 hover:text-cyan-200 mb-6 inline-block text-sm"

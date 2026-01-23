@@ -75,6 +75,8 @@
     "home": "Home",
     "products": "Products",
     "cart": "Cart",
+    "checkout": "Checkout",
+    "productDetail": "Product Detail",
     "language": "Language",
     "addedToCart": "Added to cart",
     "siteName": "E-Commerce Platform",
