@@ -1,191 +1,113 @@
-# 🛍️ Next.js E-Commerce Platform
+# E-Commerce Platform
 
-Modern, multi-language (🇹🇷 TR / 🇬🇧 EN), SEO-optimized e-commerce platform with stunning dark glass UI, built with Next.js 14 App Router, TypeScript, TailwindCSS, Redux Toolkit, and next-intl.
+Next.js 14 with App Router e-commerce application. Multi-language support in Turkish and English with modern dark glass UI and complete shopping experience.
 
-**Live Demo:** [GitHub Repository](https://github.com/tuggie7/nextjs-ecommerce-platform)
-
-## ✨ Features
-
-### Core Functionality
-- 🌐 **Multi-Language Support** - Fully localized TR/EN with next-intl
-- 🛒 **Shopping Cart** - Add, update, remove items with persistent state (Redux)
-- ❤️ **Wishlist/Favorites** - Save products for later
-- 🔍 **Product Search** - Real-time search with filtering
-- 📦 **Product Catalog** - Browse, filter by category, price range, and sort
-- 🏷️ **Product Details** - Dynamic pages with image zoom, reviews, and specs
-- 💳 **Checkout Flow** - Complete order simulation with payment UI
-- 🔔 **Toast Notifications** - User feedback for cart/wishlist actions
-
-### UI/UX Design
-- 🎨 **Dark Glass Theme** - Atmospheric gradients with glassmorphism
-- 🎭 **Responsive Design** - Mobile hamburger menu, adaptive layouts
-- 🖼️ **Image Zoom** - Click-to-zoom modals on product images
-- ⚡ **Staggered Animations** - Smooth fade-in effects on product grid
-- 🎯 **Custom Typography** - Space Grotesk font via next/font
-- 🎪 **Hero Section** - Split layout with floating promotional cards
-
-### Performance & SEO
-- ⚡ **ISR (Incremental Static Regeneration)** - Product pages revalidate every hour
-- 🚀 **Optimized Images** - next/image with lazy loading
-- 🗺️ **Sitemap & Robots.txt** - Full SEO setup
-- 📊 **Dynamic Metadata** - Localized meta tags per page
-- 🎯 **First Load JS: 87.3 kB** - Optimized bundle size
-
-### Developer Experience
-- 📝 **TypeScript** - Full type safety
-- 🔧 **Redux Toolkit** - Predictable state management
-- 🎨 **TailwindCSS** - Utility-first styling
-- 🌍 **next-intl** - i18n routing and translations
-- 🧩 **Component Architecture** - Modular, reusable components
-- ⚠️ **Error Boundaries** - Custom 404 and error pages
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 18+
-- npm or yarn
-
-### Installation
+## Quick Start
 
 ```bash
-# Clone the repository
 git clone https://github.com/tuggie7/nextjs-ecommerce-platform.git
 cd nextjs-ecommerce-platform
-
-# Install dependencies
 npm install
-
-# Run development server
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 📦 Build & Production
+## Features
 
-```bash
-# Create production build
-npm run build
+- **Multi-Language Support** - Fully localized in Turkish and English with next-intl
+- **Shopping Cart** - Add, update, and remove products with persistent Redux state
+- **Wishlist** - Save favorite products for later
+- **Product Catalog** - Browse, filter by category and price, sort products
+- **Search** - Real-time product search and filtering
+- **Product Details** - Dynamic pages with image zoom, ratings, and specifications
+- **Checkout Flow** - Complete order simulation with payment UI
+- **Dark Glass UI** - Modern design with atmospheric gradients and glassmorphism
+- **Responsive Design** - Mobile-optimized with hamburger menu and adaptive layouts
+- **Toast Notifications** - User feedback for cart and wishlist actions
+- **Optimized Images** - Next.js image optimization with lazy loading
+- **SEO Ready** - Sitemap, robots.txt, and dynamic meta tags
 
-# Start production server
-npm start
-```
+## Technology Stack
 
-## 📁 Project Structure
+- **Framework** - Next.js 14 (App Router)
+- **Language** - TypeScript
+- **Styling** - TailwindCSS
+- **State Management** - Redux Toolkit
+- **Internationalization** - next-intl
+- **API** - Fake Store API
+- **Fonts** - Space Grotesk (via next/font)
+
+## Project Structure
 
 ```
 case-2/
 ├── app/
 │   ├── [locale]/           # Localized routes (TR/EN)
-│   │   ├── page.tsx        # Home page with hero
+│   │   ├── page.tsx        # Home page with hero section
 │   │   ├── products/       # Product catalog
 │   │   ├── cart/           # Shopping cart
 │   │   ├── checkout/       # Checkout flow
 │   │   ├── error.tsx       # Error boundary
-│   │   └── not-found.tsx   # Custom 404
-│   ├── globals.css         # Global styles & animations
+│   │   └── not-found.tsx   # Custom 404 page
+│   ├── globals.css         # Global styles and animations
 │   └── providers.tsx       # Redux provider
 ├── components/
 │   ├── Header.tsx          # Navigation with mobile menu
 │   ├── ProductCard.tsx     # Product card with wishlist
 │   ├── ProductsClient.tsx  # Product grid with filters
-│   ├── CartClient.tsx      # Cart with image zoom
+│   ├── CartClient.tsx      # Shopping cart with image zoom
+│   ├── SpotlightPreview.tsx # Rotating hero showcase
 │   └── ToastProvider.tsx   # Toast notifications
 ├── lib/
 │   ├── api.ts              # Fake Store API integration
 │   └── redux/
-│       ├── store.ts        # Redux store config
+│       ├── store.ts        # Redux store configuration
 │       ├── cartSlice.ts    # Cart state management
-│       └── wishlistSlice.ts # Wishlist state
+│       └── wishlistSlice.ts # Wishlist state management
 ├── messages/
 │   ├── en.json             # English translations
 │   └── tr.json             # Turkish translations
 ├── types/
-│   └── index.ts            # TypeScript interfaces
+│   └── index.ts            # TypeScript type definitions
 ├── i18n.ts                 # i18n configuration
-├── middleware.ts           # Locale routing
+├── middleware.ts           # Locale routing middleware
 └── next.config.mjs         # Next.js configuration
 ```
 
-## 🛠️ Tech Stack
-
-| Category | Technologies |
-|----------|-------------|
-| **Framework** | Next.js 14 (App Router) |
-| **Language** | TypeScript |
-| **Styling** | TailwindCSS |
-| **State Management** | Redux Toolkit |
-| **Internationalization** | next-intl |
-| **API** | Fake Store API |
-| **Fonts** | Space Grotesk (next/font) |
-| **Icons** | Lucide React |
-
-## 🌐 Localization
-
-Fully localized in Turkish and English:
-- All UI components and pages
-- Product categories and metadata
-- Price formatting (₺ / $)
-- Toast notifications
-- Error messages
-- SEO metadata
-
-## 📊 Routes
-
-| Route | Type | Revalidation |
-|-------|------|-------------|
-| `/[locale]` | Dynamic | - |
-| `/[locale]/products` | Dynamic | - |
-| `/[locale]/products/[id]` | ISR | 3600s |
-| `/[locale]/cart` | Dynamic | - |
-| `/[locale]/checkout` | Dynamic | - |
-
-## 🎨 Design Features
-
-- **Dark Glass UI** with multi-layer atmospheric gradients
-- **Grid Overlay** with subtle pattern
-- **Floating Cards** with backdrop blur
-- **Hover Effects** with scale and shine animations
-- **Responsive Mobile Menu** with overlay
-- **Image Zoom Modals** on click
-- **Staggered Grid Animations** for product catalog
-
-## 🧪 Development
+## Available Commands
 
 ```bash
-# Run in development mode
-npm run dev
-
-# Type checking
-npm run build
-
-# Lint check
-npm run lint
+npm run dev      # Start development server
+npm run build    # Build for production
+npm start        # Start production server
+npm run lint     # Run linting checks
 ```
 
-## 🚢 Deployment
+## Deployment
 
-### Vercel (Recommended)
-1. Push to GitHub
-2. Import project to Vercel
-3. Deploy automatically
+The application works on Vercel, Netlify, Cloudflare Pages, or any Node.js hosting.
 
-### Other Platforms
-Compatible with any platform supporting Next.js:
+**Deploy on Vercel (Recommended):**
+1. Push your code to GitHub
+2. Import the repository in Vercel
+3. Deploy automatically with each push
+
+**Other Platforms:**
 - Netlify
 - Cloudflare Pages
 - AWS Amplify
-- Self-hosted (Node.js)
+- Self-hosted Node.js
 
-## 📄 License
+## Localization
 
-MIT License - free to use for personal and commercial projects.
+Fully localized experience in Turkish (TR) and English (EN):
+- All pages and components
+- Product categories and metadata
+- Currency formatting (Turkish Lira and USD)
+- Error messages and notifications
+- SEO metadata per language
 
-## 👤 Author
+## License
 
-**Tugay Ekinci**
-- GitHub: [@tuggie7](https://github.com/tuggie7)
-
----
-
-Built with ❤️ using Next.js 14
+MIT License - Free for personal and commercial use
