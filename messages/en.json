@@ -83,7 +83,13 @@
     "addedToCart": "Added to cart",
     "siteName": "E-Commerce Platform",
     "addedToWishlist": "Added to wishlist",
-    "removedFromWishlist": "Removed from wishlist"
+    "removedFromWishlist": "Removed from wishlist",
+    "footerQuickLinks": "Quick Links",
+    "footerContact": "Contact",
+    "footerDescription": "Multi-language, SEO-optimized e-commerce platform",
+    "footerCopyright": "© 2026 ShopHub. All rights reserved.",
+    "footerEmail": "info@shophub.com",
+    "footerPhone": "+90 555 123 4567"
   },
   "Checkout": {
     "title": "Checkout",

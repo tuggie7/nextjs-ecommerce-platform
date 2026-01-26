@@ -80,7 +80,13 @@
     "addedToCart": "Sepete eklendi",
     "siteName": "E-Ticaret Platformu",
     "addedToWishlist": "Favorilere eklendi",
-    "removedFromWishlist": "Favorilerden çıkarıldı"
+    "removedFromWishlist": "Favorilerden çıkarıldı",
+    "footerQuickLinks": "Hızlı Bağlantılar",
+    "footerContact": "İletişim",
+    "footerDescription": "Çok dilli, SEO optimized e-ticaret platformu",
+    "footerCopyright": "© 2026 ShopHub. Tüm hakları saklıdır.",
+    "footerEmail": "info@shophub.com",
+    "footerPhone": "+90 555 123 4567"
   },
   "Checkout": {
     "title": "Ödeme",
